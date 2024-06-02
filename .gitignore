@@ -5,6 +5,7 @@ env/
 
 # ignore files
 copy.sh
+commit.sh
 
 # eol
 * text=lf
