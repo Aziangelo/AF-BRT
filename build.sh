@@ -8,14 +8,14 @@ LIB_DIR=env/lib
 
 MBT_ARGS="--compile --shaderc $SHADERC --include include/"
 
+NAME="AF-BRT"
 DATA_VER="1.20.60"
-DATA_DIR=data/$DATA_VER
+DATA_DIR="data/$DATA_VER"
 BUILD_DIR=build
 MATERIAL_DIR=materials
-G='\e[1;32m'
-GD='\e[0;32m'
-Y='\e[1;33m'
-YD='\e[0;33m'
+
+G='\e[0;32m'
+Y='\e[0;33m'
 RESET='\e[0m'
 
 TARGETS=""
@@ -64,11 +64,11 @@ MBT_ARGS+=" --threads $THREADS"
 echo "${MBT_JAR##*/}"
 for p in $TARGETS; do
   echo "----------------------------------------------------"
-  echo -e "$YD>> File:$Y AF-TrulyDefault $RESET"
-  echo -e "$GD>> Building materials -$G $p $VD$DATA_VER:$RESET"
+  echo -e "$Y>> File:$Y $NAME $RESET"
+  echo -e "$G>> Building materials -$G $p $VD$DATA_VER:$RESET"
   if [ -d "$DATA_DIR/$p" ]; then
     for s in $MATERIALS; do
-      echo "- $s"
+      echo ">> $s"
       LD_LIBRARY_PATH=$LIB_DIR $MBT_JAR $MBT_ARGS --output $BUILD_DIR/$p --data $DATA_DIR/$p/${s##*/} $s -m
       echo -e "$G>> Success. $RESET"
    echo "----------------------------------------------------"
